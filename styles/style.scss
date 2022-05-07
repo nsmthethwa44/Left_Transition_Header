@@ -1,0 +1,148 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+}
+
+// utilities
+@font-face {
+  font-family: --AkayaKanadaka-Regular ;
+  src: url(../fonts/AkayaKanadaka-Regular.ttf);
+}
+
+$ff: --AkayaKanadaka-Regular;
+$black:#000;
+$fontSize:1rem;
+$primaryColor:#e64949;
+$white:#fff;
+
+.container{
+  position: relative;
+  width: 1200px;
+  max-width: 100%;
+  margin: 0 auto;
+}
+.menuImg{
+  padding: 1.5rem 1.5rem;
+  background: url(../img/menu_40px.png);
+  background-size: 60% 60%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  cursor: pointer;
+  display: none;
+}
+.closeImg {
+  padding: 1.5rem 1.5rem;
+  background: url(../img/multiply_40px.png);
+  background-size: 60% 60%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  cursor: pointer;
+  display: none;
+}
+// end utilities
+
+// header style
+.header{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: $primaryColor;
+  box-shadow: 0 .2rem 2rem rgba(0,0,0,0.2);
+  transition: .5s ease-in;
+  z-index: 2;
+
+  .container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: .8rem 1rem;
+
+    .logo{
+      h2{
+        font-size: 2rem;
+        text-transform: uppercase;
+        color: $white;
+        font-family: $ff;
+        font-weight: 600;
+      }
+    }
+    .navbar{
+      .nav{
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+
+        li{
+          a{
+            color: $white;
+            font-size: $fontSize;
+            font-family: $ff;
+            font-weight: 400;
+            transition: .5s ease-in;
+
+            &:hover, &.active{
+              color: $black;
+            }
+          }
+        }
+      }
+    }
+    
+  }
+}
+// end header styles
+
+// hero style
+.hero{
+  height: 100vh;
+  background: url(../img/bg.jpeg);
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+// end hero style
+
+// small devices
+@media screen and (max-width:992px){
+  .header{
+    .container{
+      .navbar{
+        position: absolute;
+        top: 0%;
+        left: -100%;
+        width: 100%;
+        height: 100vh;
+        background: $primaryColor;
+        opacity: .90;
+        z-index: 23;
+        transition: .5s ease-in;
+
+        &.active{
+          left: 0;
+        }
+
+        .nav{
+          flex-direction: column;
+          width: 100%;
+          height: 100%;
+          justify-content: center;
+        }
+      }
+    }
+  }
+
+.menuImg{
+  display: initial;
+}
+.closeImg {
+  display: initial;
+  position: absolute;
+  top: .8rem;
+  right: 1rem;
+  z-index: 1;
+}
+}
